@@ -1,9 +1,9 @@
 [
   {
-    "app": "MonApp",
+    "app": "ExchangePokemon",
     "checks": [
       {
-        "name": "Pokemon front",
+        "name": "front",
         "url": "https://exchange-pocket.vercel.app/",
         "method": "GET",
         "timeoutSec": 10,
@@ -11,24 +11,46 @@
         "expectStatusLt": 400
       },
       {
-        "name": "api-health",
-        "url": "https://api.example.com/healths",
+        "name": "api",
+        "url": "https://api-exchange-pocket.projets.p8.garage404.com/api/",
         "method": "GET",
         "timeoutSec": 10,
         "retries": 1,
-        "expectStatus": 200,
-        "mustContain": "ok",
-        "headers": {
-          "Accept": "application/json"
-        }
+        "expectStatus": 200
       }
     ]
   },
   {
-    "app": "DeuxiemeApp",
+    "app": "Cyclable",
     "checks": [
       {
-        "name": "Audisio",
+        "name": "front",
+        "url": "https://www.cyclable.com/",
+        "method": "GET",
+        "timeoutSec": 10,
+        "retries": 1,
+        "expectStatusLt": 400
+      }
+    ]
+  },
+  {
+    "app": "Cyclaparc",
+    "checks": [
+      {
+        "name": "front",
+        "url": "https://app.cyclaparc.com/",
+        "method": "GET",
+        "timeoutSec": 10,
+        "retries": 1,
+        "expectStatusLt": 400
+      }
+    ]
+  },
+  {
+    "app": "Audisio",
+    "checks": [
+      {
+        "name": "front",
         "url": "https://audio.projets.p8.garage404.com/",
         "method": "GET",
         "timeoutSec": 10,
