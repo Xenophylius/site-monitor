@@ -1,0 +1,40 @@
+[
+  {
+    "app": "MonApp",
+    "checks": [
+      {
+        "name": "Pokemon front",
+        "url": "https://exchange-pocket.vercel.app/",
+        "method": "GET",
+        "timeoutSec": 10,
+        "retries": 1,
+        "expectStatusLt": 400
+      },
+      {
+        "name": "api-health",
+        "url": "https://api.example.com/healths",
+        "method": "GET",
+        "timeoutSec": 10,
+        "retries": 1,
+        "expectStatus": 200,
+        "mustContain": "ok",
+        "headers": {
+          "Accept": "application/json"
+        }
+      }
+    ]
+  },
+  {
+    "app": "DeuxiemeApp",
+    "checks": [
+      {
+        "name": "Audisio",
+        "url": "https://audio.projets.p8.garage404.com/",
+        "method": "GET",
+        "timeoutSec": 10,
+        "retries": 1,
+        "expectStatusLt": 400
+      }
+    ]
+  }
+]
