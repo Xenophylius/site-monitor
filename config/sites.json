@@ -38,7 +38,7 @@
     "checks": [
       {
         "name": "front",
-        "url": "https://app.cyclaparc.com/",
+        "url": "https://app.cyclaparc.com/se-connecter",
         "method": "GET",
         "timeoutSec": 10,
         "retries": 1,
@@ -51,7 +51,7 @@
     "checks": [
       {
         "name": "front",
-        "url": "https://audio.projets.p8.garage404.com/",
+        "url": "https://audio.projets.p8.garage404.com/login",
         "method": "GET",
         "timeoutSec": 10,
         "retries": 1,
