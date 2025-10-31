@@ -2,7 +2,7 @@ name: Site monitor (every 10 min)
 
 on:
   schedule:
-    - cron: "*/30 * * * *"  # UTC
+    - cron: "*/59 * * * *"  # UTC
   workflow_dispatch: {}
 
 jobs:
