@@ -33,7 +33,7 @@
       },
       {
         "name": "api",
-        "url": "https://api.facturefacile.cloud/api",
+        "url": "https://api.facturefacile.cloud/api/docs",
         "method": "GET",
         "timeoutSec": 10,
         "retries": 1,
