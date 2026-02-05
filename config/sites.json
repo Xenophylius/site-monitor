@@ -33,11 +33,11 @@
       },
       {
         "name": "api",
-        "url": "https://api.facturefacile.cloud/api/docs",
+        "url": "https://api.facturefacile.cloud/api/",
         "method": "GET",
         "timeoutSec": 50,
         "retries": 1,
-        "expectStatus": 200
+        "expectStatusIn": [200, 401]
       }
     ]
   },

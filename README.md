@@ -9,7 +9,7 @@ Surveille plusieurs sites (front et/ou API) toutes les 10 minutes. Envoie **une 
    - `method` (`GET` ou `HEAD`)
    - `timeoutSec` (par tentative)
    - `retries` (nombre de retentatives)
-   - `expectStatus` (code exact attendu) **ou** `expectStatusLt` (ex: 400)
+   - `expectStatus` (code exact attendu) **ou** `expectStatusIn` (liste de codes acceptés, ex: `[200, 401]`) **ou** `expectStatusLt` (ex: 400)
    - `mustContain` (chaîne devant apparaître dans le body)
    - `headers` (objet, ex: `{ "Authorization": "Bearer xxx" }`)
 
