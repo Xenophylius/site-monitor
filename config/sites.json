@@ -27,7 +27,7 @@
         "name": "front",
         "url": "https://app.facturefacile.cloud/",
         "method": "GET",
-        "timeoutSec": 10,
+        "timeoutSec": 50,
         "retries": 1,
         "expectStatusLt": 400
       },
@@ -35,7 +35,7 @@
         "name": "api",
         "url": "https://api.facturefacile.cloud/api/docs",
         "method": "GET",
-        "timeoutSec": 10,
+        "timeoutSec": 50,
         "retries": 1,
         "expectStatus": 200
       }
