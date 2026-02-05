@@ -5,6 +5,7 @@ export type Check = {
   timeoutSec?: number;
   retries?: number;
   expectStatus?: number;
+  expectStatusIn?: number[];
   expectStatusLt?: number;
   mustContain?: string;
   headers?: Record<string, string>;
@@ -51,7 +52,9 @@ async function runOnce(check: Check) {
   const res = await fetchWithTimeout(check.url, { method: check.method || "GET", timeoutMs: toMs(check.timeoutSec, 10), headers: check.headers || {} });
   if (!('ok' in res) || !res.ok) return { ok: false, reason: (res as any).error, status: 0, durationMs: (res as any).durationMs, urlFinal: check.url };
   const status = (res as any).status;
+  // Check status expectations (only use one: expectStatus, expectStatusIn, or expectStatusLt)
   if (typeof check.expectStatus === "number" && status !== check.expectStatus) return { ok: false, reason: `HTTP ${status} (expected ${check.expectStatus})`, status, durationMs: (res as any).durationMs, urlFinal: (res as any).urlFinal, headers: (res as any).headers, body: (res as any).body };
+  if (Array.isArray(check.expectStatusIn) && !check.expectStatusIn.includes(status)) return { ok: false, reason: `HTTP ${status} (expected one of: ${check.expectStatusIn.join(", ")})`, status, durationMs: (res as any).durationMs, urlFinal: (res as any).urlFinal, headers: (res as any).headers, body: (res as any).body };
   if (typeof check.expectStatusLt === "number" && !(status < check.expectStatusLt)) return { ok: false, reason: `HTTP ${status} (expected < ${check.expectStatusLt})`, status, durationMs: (res as any).durationMs, urlFinal: (res as any).urlFinal, headers: (res as any).headers, body: (res as any).body };
   if (check.mustContain && !(res as any).body.includes(check.mustContain)) return { ok: false, reason: `Body missing "${check.mustContain}"`, status, durationMs: (res as any).durationMs, urlFinal: (res as any).urlFinal, headers: (res as any).headers, body: (res as any).body };
   return { ok: true, status, durationMs: (res as any).durationMs, urlFinal: (res as any).urlFinal, headers: (res as any).headers, body: (res as any).body };

@@ -78,8 +78,12 @@ async function runOnce(check) {
 
   const status = res.status;
 
+  // Check status expectations (only use one: expectStatus, expectStatusIn, or expectStatusLt)
   if (typeof check.expectStatus === "number" && status !== check.expectStatus) {
     return { ok: false, reason: `HTTP ${status} (expected ${check.expectStatus})`, status, ...res };
+  }
+  if (Array.isArray(check.expectStatusIn) && !check.expectStatusIn.includes(status)) {
+    return { ok: false, reason: `HTTP ${status} (expected one of: ${check.expectStatusIn.join(", ")})`, status, ...res };
   }
   if (typeof check.expectStatusLt === "number" && !(status < check.expectStatusLt)) {
     return { ok: false, reason: `HTTP ${status} (expected < ${check.expectStatusLt})`, status, ...res };
