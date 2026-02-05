@@ -23,7 +23,7 @@ function nowParisISO() {
   return `${s} (${tz})`;
 }
 
-async function fetchWithTimeout(url, { method = "GET", timeoutMs = 10000, headers = {} } = {}) {
+async function fetchWithTimeout(url, { method = "GET", timeoutMs = 50000, headers = {} } = {}) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
   const t0 = performance.now();
@@ -62,7 +62,7 @@ async function fetchWithTimeout(url, { method = "GET", timeoutMs = 10000, header
 async function runOnce(check) {
   const res = await fetchWithTimeout(check.url, {
     method: check.method || "GET",
-    timeoutMs: toMs(check.timeoutSec, 10),
+    timeoutMs: toMs(check.timeoutSec, 50),
     headers: check.headers || {}
   });
 
